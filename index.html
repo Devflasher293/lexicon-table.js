@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate Table</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+
+<button id="generateButton">Generate Table</button>
+<table id="companiesTable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Location</th>
+      <th>Year Founded</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+  </tbody>
+</table>
+
+<script>
+  document.getElementById('generateButton').addEventListener('click', function() {
+    const companies = [
+      ["Saab AB", "Stockholm", 1937],
+      ["Volvo Group", "Göteborg", 1927],
+      ["Sandvik AB", "Stockholm", 1862],
+      ["Atlas Copco Group", "Nacka", 1873],
+      ["Electrolux AB", "Stockholm", 1919],
+      ["Skanska AB", "Stockholm", 1887],
+    ];
+
+    const tableBody = document.querySelector('#companiesTable tbody');
+
+    // Clear existing table rows
+    tableBody.innerHTML = '';
+
+    // Generate new table rows
+    companies.forEach(company => {
+      const row = document.createElement('tr');
+      company.forEach(data => {
+        const cell = document.createElement('td');
+        cell.textContent = data;
+        row.appendChild(cell);
+      });
+      tableBody.appendChild(row);
+    });
+  });
+</script>
+
+</body>
+</html>
